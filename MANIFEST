@@ -1,0 +1,10 @@
+Changes
+LICENSE
+MANIFEST
+META.yml
+Makefile.PL
+README
+bin/oscompute
+dist.ini
+lib/Net/OpenStack/Compute.pm
+t/00-load.t

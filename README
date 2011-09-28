@@ -1,0 +1,28 @@
+NAME
+    Net::OpenStack::Compute - Bindings for the OpenStack compute api.
+
+VERSION
+    version 0.0001
+
+SYNOPSIS
+        use Net::OpenStack::Compute;
+        my $compute = Net::OpenStack::Compute->new(
+            base_url => 'http://...',
+            token    => 'secret',
+        );
+        $compute->get_servers();
+
+METHODS
+  get_server($id)
+  get_servers()
+  create_server(name => $name, flavor => $flavor, image => $image)
+  delete_server($id)
+AUTHOR
+    Naveed Massjouni <naveedm9@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by Naveed Massjouni.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
