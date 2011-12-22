@@ -4,7 +4,9 @@ MANIFEST
 META.yml
 Makefile.PL
 README
+README.pod
 bin/oscompute
 dist.ini
 lib/Net/OpenStack/Compute.pm
+lib/Net/OpenStack/Compute/Auth.pm
 t/00-load.t

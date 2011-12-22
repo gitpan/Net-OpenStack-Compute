@@ -2,21 +2,33 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack compute api.
 
 VERSION
-    version 0.0001
+    version 1.0000
 
 SYNOPSIS
         use Net::OpenStack::Compute;
         my $compute = Net::OpenStack::Compute->new(
-            base_url => 'http://...',
-            token    => 'secret',
+            auth_url   => $auth_url,
+            user       => $user,
+            key        => $password,
+            project_id => $project_id, # Optional
+            region     => $egion,      # Optional
         );
-        $compute->get_servers();
+        $compute->create_server(name => 's1', flavor => $flav_id, image => $img_id);
 
 METHODS
-  get_server($id)
-  get_servers()
-  create_server(name => $name, flavor => $flavor, image => $image)
-  delete_server($id)
+  get_server
+        get_server($id)
+
+  get_servers
+        get_servers()
+        get_servers(detail => 0)
+
+  create_server
+        create_server(name => $name, flavor => $flavor, image => $image)
+
+  delete_server
+        delete_server($id)
+
 AUTHOR
     Naveed Massjouni <naveedm9@gmail.com>
 

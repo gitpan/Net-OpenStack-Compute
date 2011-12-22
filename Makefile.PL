@@ -22,12 +22,12 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Net::OpenStack::Compute",
   "PREREQ_PM" => {
+    "Any::Moose" => 0,
     "HTTP::Request" => 0,
     "JSON" => 0,
-    "LWP" => 0,
-    "Moose" => 0
+    "LWP" => 0
   },
-  "VERSION" => "0.0001",
+  "VERSION" => "1.0000",
   "test" => {
     "TESTS" => "t/*.t"
   }
