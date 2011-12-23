@@ -2,7 +2,7 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack compute api.
 
 VERSION
-    version 1.0000
+    version 1.0001
 
 SYNOPSIS
         use Net::OpenStack::Compute;
@@ -14,6 +14,11 @@ SYNOPSIS
             region     => $egion,      # Optional
         );
         $compute->create_server(name => 's1', flavor => $flav_id, image => $img_id);
+
+DESCRIPTION
+    This is the main class responsible for interacting with OpenStack
+    Compute. Also see oscompute for the command line tool that is a wrapper
+    for this class.
 
 METHODS
   get_server

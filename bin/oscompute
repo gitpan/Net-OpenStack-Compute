@@ -91,8 +91,19 @@ sub _get_ip {
 
 # PODNAME: oscompute
 
-=head1 SYNOPSIS
 
+__END__
+=pod
+
+=head1 NAME
+
+oscompute
+
+=head1 VERSION
+
+version 1.0001
+
+=head1 SYNOPSIS
 
     Usage: oscompute command [arguments]
 
@@ -126,4 +137,16 @@ sub _get_ip {
 
 This is a command line tool for interacting with the OpenStack Compute API.
 
+=head1 AUTHOR
+
+Naveed Massjouni <naveedm9@gmail.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Naveed Massjouni.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+

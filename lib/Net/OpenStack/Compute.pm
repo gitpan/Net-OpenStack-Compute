@@ -1,7 +1,7 @@
 package Net::OpenStack::Compute;
 use Any::Moose;
 
-our $VERSION = '1.0000'; # VERSION
+our $VERSION = '1.0001'; # VERSION
 
 use Carp;
 use HTTP::Request;
@@ -108,7 +108,7 @@ Net::OpenStack::Compute - Bindings for the OpenStack compute api.
 
 =head1 VERSION
 
-version 1.0000
+version 1.0001
 
 =head1 SYNOPSIS
 
@@ -121,6 +121,12 @@ version 1.0000
         region     => $egion,      # Optional
     );
     $compute->create_server(name => 's1', flavor => $flav_id, image => $img_id);
+
+=head1 DESCRIPTION
+
+This is the main class responsible for interacting with OpenStack Compute.
+Also see L<oscompute> for the command line tool that is a wrapper for this
+class.
 
 =head1 METHODS
 
