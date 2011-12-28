@@ -23,11 +23,12 @@ my %WriteMakefileArgs = (
   "NAME" => "Net::OpenStack::Compute",
   "PREREQ_PM" => {
     "Any::Moose" => 0,
+    "App::Rad" => 0,
     "HTTP::Request" => 0,
     "JSON" => 0,
     "LWP" => 0
   },
-  "VERSION" => "1.0100",
+  "VERSION" => "1.0101",
   "test" => {
     "TESTS" => "t/*.t"
   }
