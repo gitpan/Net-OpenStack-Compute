@@ -21,4 +21,4 @@ requires:
 resources:
   bugtracker: http://github.com/ironcamel/Net-OpenStack-Compute/issues
   repository: git://github.com/ironcamel/Net-OpenStack-Compute.git
-version: 1.0101
+version: 1.0102
