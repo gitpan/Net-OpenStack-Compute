@@ -4,7 +4,7 @@ MANIFEST
 META.yml
 Makefile.PL
 README
-README.pod
+README.md
 bin/oscompute
 dist.ini
 lib/Net/OpenStack/Compute.pm

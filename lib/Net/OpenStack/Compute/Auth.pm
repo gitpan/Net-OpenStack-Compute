@@ -7,7 +7,7 @@ use LWP;
 has auth_url   => (is => 'rw', isa => 'Str', required => 1);
 has user       => (is => 'ro', isa => 'Str', required => 1);
 has password   => (is => 'ro', isa => 'Str', required => 1);
-has project_id => (is => 'ro');
+has project_id => (is => 'ro', isa => 'Str', required => 1);
 has region     => (is => 'ro');
 has _store     => (is => 'ro', lazy => 1, builder => '_build_store');
 
@@ -61,6 +61,7 @@ sub auth_keystone {
     my $ua = LWP::UserAgent->new();
     my $auth_data = {
         auth =>  {
+            tenantName => $self->project_id,
             passwordCredentials => {
                 username => $self->user,
                 password => $self->password,
@@ -103,7 +104,7 @@ Net::OpenStack::Compute::Auth
 
 =head1 VERSION
 
-version 1.0001
+version 1.0100
 
 =head1 SYNOPSIS
 
@@ -113,7 +114,7 @@ version 1.0001
         auth_url   => $auth_url,
         user       => $user,
         password   => $key,
-        project_id => $project_id, # Optional
+        project_id => $project_id,
         region     => $region,     # Optional
     );
 
