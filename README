@@ -2,7 +2,7 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack compute api.
 
 VERSION
-    version 1.0102
+    version 1.0200
 
 SYNOPSIS
         use Net::OpenStack::Compute;
@@ -46,6 +46,13 @@ METHODS
 
   delete_image
         delete_image($id)
+
+  get_flavor
+        get_flavor($id)
+
+  get_flavors
+        get_flavors()
+        get_flavors(detail => 0) # Detail defaults to 1.
 
 AUTHOR
     Naveed Massjouni <naveedm9@gmail.com>
