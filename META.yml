@@ -15,10 +15,11 @@ name: Net-OpenStack-Compute
 requires:
   Any::Moose: 0
   App::Rad: 0
+  App::Rad::Plugin::MoreHelp: 0
   HTTP::Request: 0
   JSON: 0
   LWP: 0
 resources:
   bugtracker: http://github.com/ironcamel/Net-OpenStack-Compute/issues
   repository: git://github.com/ironcamel/Net-OpenStack-Compute.git
-version: 1.0300
+version: 1.0301

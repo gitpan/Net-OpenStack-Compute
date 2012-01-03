@@ -24,11 +24,12 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Any::Moose" => 0,
     "App::Rad" => 0,
+    "App::Rad::Plugin::MoreHelp" => 0,
     "HTTP::Request" => 0,
     "JSON" => 0,
     "LWP" => 0
   },
-  "VERSION" => "1.0300",
+  "VERSION" => "1.0301",
   "test" => {
     "TESTS" => "t/*.t"
   }
