@@ -104,7 +104,7 @@ Net::OpenStack::Compute::Auth
 
 =head1 VERSION
 
-version 1.0301
+version 1.0302
 
 =head1 SYNOPSIS
 

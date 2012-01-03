@@ -2,7 +2,7 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack compute api.
 
 VERSION
-    version 1.0301
+    version 1.0302
 
 SYNOPSIS
         use Net::OpenStack::Compute;
