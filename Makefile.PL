@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Bindings for the OpenStack compute api.",
+  "ABSTRACT" => "Bindings for the OpenStack Compute API.",
   "AUTHOR" => "Naveed Massjouni <naveedm9\@gmail.com>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     "JSON" => 0,
     "LWP" => 0
   },
-  "VERSION" => "1.0302",
+  "VERSION" => "1.0400",
   "test" => {
     "TESTS" => "t/*.t"
   }

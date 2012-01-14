@@ -1,8 +1,8 @@
 NAME
-    Net::OpenStack::Compute - Bindings for the OpenStack compute api.
+    Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 VERSION
-    version 1.0302
+    version 1.0400
 
 SYNOPSIS
         use Net::OpenStack::Compute;
@@ -16,17 +16,25 @@ SYNOPSIS
         $compute->create_server(name => 's1', flavor => $flav_id, image => $img_id);
 
 DESCRIPTION
-    This is the main class responsible for interacting with OpenStack
-    Compute. Also see oscompute for the command line tool that is a wrapper
-    for this class.
+    This class is an interface to the OpenStack Compute API. Also see the
+    oscompute command line tool.
 
 METHODS
   get_server
         get_server($id)
 
+    Returns the server with the given id or undef if it doesn't exist.
+
   get_servers
         get_servers()
-        get_servers(detail => 0) # Detail defaults to 1.
+        get_servers(detail => 1) # Detail defaults to 0.
+
+    Returns an arrayref of all the servers.
+
+  get_servers_by_name
+        get_servers_by_name($name)
+
+    Returns an arrayref of servers with the given name.
 
   create_server
         create_server(name => $name, flavor => $flavor, image => $image)
@@ -39,7 +47,7 @@ METHODS
 
   get_images
         get_images()
-        get_images(detail => 0) # Detail defaults to 1.
+        get_images(detail => 1) # Detail defaults to 0.
 
   create_image
         create_image(name => $name, server => $server_id)
@@ -52,7 +60,21 @@ METHODS
 
   get_flavors
         get_flavors()
-        get_flavors(detail => 0) # Detail defaults to 1.
+        get_flavors(detail => 1) # Detail defaults to 0.
+
+  token
+        token()
+
+    Returns the OpenStack Compute API auth token.
+
+  base_url
+        base_url()
+
+    Returns the base url for the OpenStack Compute API, which is returned by
+    the server after authenticating.
+
+SEE ALSO
+    oscompute
 
 AUTHOR
     Naveed Massjouni <naveedm9@gmail.com>
