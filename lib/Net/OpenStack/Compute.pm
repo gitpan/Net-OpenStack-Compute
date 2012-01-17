@@ -1,7 +1,7 @@
 package Net::OpenStack::Compute;
 use Any::Moose;
 
-our $VERSION = '1.0400'; # VERSION
+our $VERSION = '1.0401'; # VERSION
 
 use Carp;
 use HTTP::Request;
@@ -121,7 +121,7 @@ sub create_image {
         }),
     );
     _check_res($res);
-    return from_json($res->content);
+    return 1;
 }
 
 sub delete_image {
@@ -167,7 +167,7 @@ Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 =head1 VERSION
 
-version 1.0400
+version 1.0401
 
 =head1 SYNOPSIS
 
