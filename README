@@ -2,7 +2,7 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 VERSION
-    version 1.0500
+    version 1.0600
 
 SYNOPSIS
         use Net::OpenStack::Compute;
@@ -60,6 +60,11 @@ METHODS
         rebuild_server($server_id, { imageRef => $img_id })
 
     Returns a server hashref.
+
+  set_password
+        set_password($server_id, $new_password)
+
+    Returns true on success.
 
   get_image
         get_image($id)
