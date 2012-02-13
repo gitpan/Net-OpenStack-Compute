@@ -8,6 +8,8 @@ use JSON qw(from_json to_json);
 use LWP;
 use Net::OpenStack::Compute;
 
+binmode STDOUT, ':encoding(UTF-8)';
+
 sub setup {
     my $c = shift;
 
@@ -245,7 +247,7 @@ oscompute
 
 =head1 VERSION
 
-version 1.0600
+version 1.0601
 
 =head1 SYNOPSIS
 

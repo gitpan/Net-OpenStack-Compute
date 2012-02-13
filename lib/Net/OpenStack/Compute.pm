@@ -1,7 +1,7 @@
 package Net::OpenStack::Compute;
 use Any::Moose;
 
-our $VERSION = '1.0600'; # VERSION
+our $VERSION = '1.0601'; # VERSION
 
 use Carp;
 use HTTP::Request;
@@ -177,7 +177,7 @@ Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 =head1 VERSION
 
-version 1.0600
+version 1.0601
 
 =head1 SYNOPSIS
 
