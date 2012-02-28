@@ -9,4 +9,5 @@ bin/oscompute
 dist.ini
 lib/Net/OpenStack/Compute.pm
 lib/Net/OpenStack/Compute/Auth.pm
+lib/Net/OpenStack/Compute/AuthRole.pm
 t/00-load.t

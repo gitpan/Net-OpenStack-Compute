@@ -1,7 +1,8 @@
 package Net::OpenStack::Compute;
 use Any::Moose;
+with 'Net::OpenStack::Compute::AuthRole';
 
-our $VERSION = '1.0601'; # VERSION
+our $VERSION = '1.0700'; # VERSION
 
 use Carp;
 use HTTP::Request;
@@ -9,24 +10,15 @@ use JSON qw(from_json to_json);
 use LWP;
 use Net::OpenStack::Compute::Auth;
 
-has auth_url   => (is => 'ro', isa => 'Str', required => 1);
-has user       => (is => 'ro', isa => 'Str', required => 1);
-has password   => (is => 'ro', isa => 'Str', required => 1);
-has project_id => (is => 'ro', isa => 'Str', required => 1);
-has region     => (is => 'ro');
-
 has _auth => (
     is   => 'rw',
     isa  => 'Net::OpenStack::Compute::Auth',
     lazy => 1,
     default => sub {
         my $self = shift;
-        Net::OpenStack::Compute::Auth->new(
-            auth_url   => $self->auth_url,
-            user       => $self->user,
-            password   => $self->password,
-            project_id => $self->project_id,
-            region     => $self->region,
+        return Net::OpenStack::Compute::Auth->new(
+            map { $_, $self->$_ } qw(auth_url user password project_id region
+                service_name is_rax_auth)
         );
     },
     handles => [qw(base_url token)],
@@ -89,6 +81,24 @@ sub rebuild_server {
     my $res = $self->_action($server, rebuild => $data);
     _check_res($res);
     return from_json($res->content)->{server};
+}
+
+sub resize_server {
+    my ($self, $server, $data) = @_;
+    croak "server id is required" unless $server;
+    croak "invalid data" unless $data and 'HASH' eq ref $data;
+    croak "flavorRef is required" unless $data->{flavorRef};
+    my $res = $self->_action($server, resize => $data);
+    return _check_res($res);
+}
+
+sub reboot_server {
+    my ($self, $server, $data) = @_;
+    croak "server id is required" unless $server;
+    croak "invalid data" unless $data and 'HASH' eq ref $data;
+    croak "reboot type is required" unless $data->{type};
+    my $res = $self->_action($server, reboot => $data);
+    return _check_res($res);
 }
 
 sub set_password {
@@ -177,7 +187,7 @@ Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 =head1 VERSION
 
-version 1.0601
+version 1.0700
 
 =head1 SYNOPSIS
 
