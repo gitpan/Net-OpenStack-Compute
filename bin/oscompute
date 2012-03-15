@@ -47,6 +47,11 @@ Flavor commands:
     flavor [list]
     flavor show <flavor-id>
 
+Options:
+    --verbose|v   causes output to contain all info returned from the server
+    --insecure    turns off ssl verification
+    --query|q     provide a query string to append to your request
+
 Notes:
     Any <server> param can be a server id or a server name.
 EOD
@@ -57,6 +62,7 @@ EOD
     die sprintf($msg, 'NOVA_PASSWORD or NOVA_API_KEY')
         unless $ENV{NOVA_PASSWORD} || $ENV{NOVA_API_KEY};
 
+    $c->getopt('verbose|v', 'insecure', 'query|q=s');
     $c->stash->{compute} = Net::OpenStack::Compute->new(
         auth_url     => $ENV{NOVA_URL},
         user         => $ENV{NOVA_USERNAME},
@@ -65,8 +71,8 @@ EOD
         region       => $ENV{NOVA_REGION_NAME},
         service_name => $ENV{NOVA_SERVICE_NAME},
         is_rax_auth  => $ENV{NOVA_RAX_AUTH},
+        verify_ssl   => ! $c->options->{insecure},
     );
-    $c->getopt('verbose|v');
 }
 
 App::Rad->run();
@@ -207,7 +213,8 @@ sub _get_server {
 sub _get_servers {
     my $c = shift;
     my $compute = $c->stash->{compute};
-    my $servers = $compute->get_servers(detail => 1);
+    my $q = $c->options->{query};
+    my $servers = $compute->get_servers(detail => 1, query => $q);
     return _to_json($servers) if $c->options->{verbose};
     return _format_servers(@$servers);
 }
@@ -215,7 +222,8 @@ sub _get_servers {
 sub _get_images {
     my $c = shift;
     my $compute = $c->stash->{compute};
-    my $images = $compute->get_images(detail => 1);
+    my $q = $c->options->{query};
+    my $images = $compute->get_images(detail => 1, query => $q);
     return _to_json($images) if $c->options->{verbose};
     return _format_images(@$images);
 }
@@ -223,7 +231,8 @@ sub _get_images {
 sub _get_flavors {
     my $c = shift;
     my $compute = $c->stash->{compute};
-    my $flavors = $compute->get_flavors(detail => 1);
+    my $q = $c->options->{query};
+    my $flavors = $compute->get_flavors(detail => 1, query => $q);
     return _to_json($flavors) if $c->options->{verbose};
     return _format_flavors(@$flavors);
 }
@@ -268,7 +277,7 @@ oscompute
 
 =head1 VERSION
 
-version 1.0700
+version 1.0800
 
 =head1 SYNOPSIS
 
@@ -306,6 +315,10 @@ version 1.0700
         flavor [list]
         flavor show <flavor-id>
 
+    Options:
+        --verbose|v   causes output to contain all info returned from the server
+        --insecure    turns off ssl verification
+        --query|q     provide a query string to append to your request
     Notes:
 
         Any <server> param can be a server id or a server name.

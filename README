@@ -2,16 +2,20 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 VERSION
-    version 1.0700
+    version 1.0800
 
 SYNOPSIS
         use Net::OpenStack::Compute;
         my $compute = Net::OpenStack::Compute->new(
-            auth_url   => $auth_url,
-            user       => $user,
-            password   => $password,
-            project_id => $project_id,
-            region     => $region, # Optional
+            auth_url     => $auth_url,
+            user         => $user,
+            password     => $password,
+            project_id   => $project_id,
+            # Optional:
+            region       => $ENV{NOVA_REGION_NAME},
+            service_name => $ENV{NOVA_SERVICE_NAME},
+            is_rax_auth  => $ENV{NOVA_RAX_AUTH},
+            verify_ssl   => 0, 
         );
         $compute->create_server(name => 's1', flavor => $flav_id, image => $img_id);
 
@@ -35,8 +39,15 @@ METHODS
     Returns the server with the given id or false if it doesn't exist.
 
   get_servers
-        get_servers()
-        get_servers(detail => 1) # Detail defaults to 0.
+        get_servers(%params)
+
+    params:
+
+    detail
+        Optional. Defaults to 0.
+
+    query
+        Optional query string to be appended to requests.
 
     Returns an arrayref of all the servers.
 
@@ -73,9 +84,16 @@ METHODS
 
   get_images
         get_images()
-        get_images(detail => 1) # Detail defaults to 0.
 
-    Returns an arrayref of all the servers.
+    params:
+
+    detail
+        Optional. Defaults to 0.
+
+    query
+        Optional query string to be appended to requests.
+
+    Returns an arrayref of all the images.
 
   create_image
         create_image($server_id, { name => 'bob' })
@@ -94,7 +112,14 @@ METHODS
 
   get_flavors
         get_flavors()
-        get_flavors(detail => 1) # Detail defaults to 0.
+
+    params:
+
+    detail
+        Optional. Defaults to 0.
+
+    query
+        Optional query string to be appended to requests.
 
     Returns an arrayref of all the flavors.
 

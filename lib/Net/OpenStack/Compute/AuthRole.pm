@@ -8,6 +8,7 @@ has project_id   => (is => 'ro');
 has region       => (is => 'ro');
 has service_name => (is => 'ro');
 has is_rax_auth  => (is => 'ro', isa => 'Bool'); # Rackspace auth
+has verify_ssl   => (is => 'ro', isa => 'Bool', default => 1);
 
 1;
 
@@ -20,7 +21,7 @@ Net::OpenStack::Compute::AuthRole
 
 =head1 VERSION
 
-version 1.0700
+version 1.0800
 
 =head1 AUTHOR
 
