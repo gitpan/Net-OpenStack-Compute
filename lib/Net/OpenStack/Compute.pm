@@ -2,7 +2,7 @@ package Net::OpenStack::Compute;
 use Any::Moose;
 with 'Net::OpenStack::Compute::AuthRole';
 
-our $VERSION = '1.0800'; # VERSION
+our $VERSION = '1.0801'; # VERSION
 
 use Carp;
 use HTTP::Request;
@@ -199,7 +199,7 @@ Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 =head1 VERSION
 
-version 1.0800
+version 1.0801
 
 =head1 SYNOPSIS
 

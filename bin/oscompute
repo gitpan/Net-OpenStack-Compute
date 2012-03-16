@@ -25,7 +25,6 @@ sub setup {
     $c->more_help(<<EOD);
     
 Server commands:
-
     server [list]
     server show <server>
     server create <name> <flavor> <image-id>
@@ -36,14 +35,12 @@ Server commands:
     server password <server> <new-password>
 
 Image commands:
-
     image [list]
     image show <image-id>
     image create <name> <server>
     image delete <image-id>
 
 Flavor commands:
-
     flavor [list]
     flavor show <flavor-id>
 
@@ -277,7 +274,7 @@ oscompute
 
 =head1 VERSION
 
-version 1.0800
+version 1.0801
 
 =head1 SYNOPSIS
 
@@ -293,7 +290,6 @@ version 1.0800
         server      perform server actions
 
     Server commands:
-
         server [list]
         server show <server>
         server create <name> <flavor> <image-id>
@@ -304,14 +300,12 @@ version 1.0800
         server password <server> <new-password>
 
     Image commands:
-
         image [list]
         image show <image-id>
         image create <name> <server>
         image delete <image-id>
 
     Flavor commands:
-
         flavor [list]
         flavor show <flavor-id>
 
@@ -319,8 +313,8 @@ version 1.0800
         --verbose|v   causes output to contain all info returned from the server
         --insecure    turns off ssl verification
         --query|q     provide a query string to append to your request
-    Notes:
 
+    Notes:
         Any <server> param can be a server id or a server name.
 
     Examples:
@@ -357,7 +351,7 @@ version 1.0800
     oscompute image list
 
     # Create a snapshot image of a given server.
-    oscompute image create myimg ec05b52e-f575-469c-a91e-7f0ddd4fab95
+    oscompute image create new-img-name bob
 
 =head1 DESCRIPTION
 
