@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     "JSON" => 0,
     "LWP" => 0
   },
-  "VERSION" => "1.0801",
+  "VERSION" => "1.0802",
   "test" => {
     "TESTS" => "t/*.t"
   }

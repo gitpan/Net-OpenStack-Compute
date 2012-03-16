@@ -2,7 +2,7 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 VERSION
-    version 1.0801
+    version 1.0802
 
 SYNOPSIS
         use Net::OpenStack::Compute;
@@ -83,7 +83,7 @@ METHODS
     Returns an image hashref.
 
   get_images
-        get_images()
+        get_images(%params)
 
     params:
 
@@ -111,7 +111,7 @@ METHODS
     Returns a flavor hashref.
 
   get_flavors
-        get_flavors()
+        get_flavors(%params)
 
     params:
 
