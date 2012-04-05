@@ -27,9 +27,10 @@ my %WriteMakefileArgs = (
     "App::Rad::Plugin::MoreHelp" => 0,
     "HTTP::Request" => 0,
     "JSON" => 0,
-    "LWP" => 0
+    "LWP" => 0,
+    "Pod::Select" => 0
   },
-  "VERSION" => "1.0802",
+  "VERSION" => "1.0900",
   "test" => {
     "TESTS" => "t/*.t"
   }

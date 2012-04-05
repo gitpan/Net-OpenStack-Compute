@@ -21,7 +21,7 @@ Net::OpenStack::Compute::AuthRole
 
 =head1 VERSION
 
-version 1.0802
+version 1.0900
 
 =head1 AUTHOR
 
