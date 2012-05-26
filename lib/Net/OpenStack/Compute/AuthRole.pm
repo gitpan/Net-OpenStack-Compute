@@ -107,7 +107,7 @@ Net::OpenStack::Compute::AuthRole
 
 =head1 VERSION
 
-version 1.1000
+version 1.1001
 
 =head1 DESCRIPTION
 

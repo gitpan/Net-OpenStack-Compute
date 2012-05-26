@@ -6,7 +6,7 @@ build_requires: {}
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Dist::Zilla version 4.300016, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -18,9 +18,9 @@ requires:
   HTTP::Request: 0
   JSON: 0
   LWP: 0
-  Moo: 0.009014
+  Moo: 0.091007
   Pod::Select: 0
 resources:
   bugtracker: http://github.com/ironcamel/Net-OpenStack-Compute/issues
   repository: git://github.com/ironcamel/Net-OpenStack-Compute.git
-version: 1.1000
+version: 1.1001
