@@ -10,3 +10,4 @@ dist.ini
 lib/Net/OpenStack/Compute.pm
 lib/Net/OpenStack/Compute/AuthRole.pm
 t/00-load.t
+t/01-basic.t

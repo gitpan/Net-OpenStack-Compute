@@ -27,10 +27,11 @@ my %WriteMakefileArgs = (
     "HTTP::Request" => 0,
     "JSON" => 0,
     "LWP" => 0,
-    "Moo" => "0.091007",
-    "Pod::Select" => 0
+    "Moose" => 0,
+    "Pod::Select" => 0,
+    "Test::Most" => 0
   },
-  "VERSION" => "1.1001",
+  "VERSION" => "1.1002",
   "test" => {
     "TESTS" => "t/*.t"
   }

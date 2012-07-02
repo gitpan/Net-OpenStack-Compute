@@ -1,13 +1,12 @@
 package Net::OpenStack::Compute;
-use Moo;
+use Moose;
 
-our $VERSION = '1.1001'; # VERSION
+our $VERSION = '1.1002'; # VERSION
 
 use Carp;
 use HTTP::Request;
 use JSON qw(from_json to_json);
 use LWP;
-#use Net::OpenStack::Compute::Auth;
 
 has auth_url     => (is => 'rw', required => 1);
 has user         => (is => 'ro', required => 1);
@@ -16,7 +15,7 @@ has project_id   => (is => 'ro');
 has region       => (is => 'ro');
 has service_name => (is => 'ro');
 has is_rax_auth  => (is => 'ro');
-has verify_ssl   => (is => 'ro', default => ! $ENV{OSCOMPUTE_INSECURE});
+has verify_ssl   => (is => 'ro', default => sub {! $ENV{OSCOMPUTE_INSECURE}});
 
 has base_url => (
     is      => 'ro',
@@ -244,7 +243,7 @@ sub _check_res {
     return 1;
 }
 
-my $around_sub = sub {
+around qw( _get _post _delete ) => sub {
     my $orig = shift;
     my $self = shift;
     my $res = $self->$orig(@_);
@@ -252,10 +251,6 @@ my $around_sub = sub {
     return $res;
 };
 
-
-for my $s (qw( _get _post _delete )) {
-    around $s => $around_sub;
-}
 
 # ABSTRACT: Bindings for the OpenStack Compute API.
 
@@ -271,7 +266,7 @@ Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 =head1 VERSION
 
-version 1.1001
+version 1.1002
 
 =head1 SYNOPSIS
 
@@ -285,9 +280,9 @@ version 1.1001
         region       => $ENV{NOVA_REGION_NAME},
         service_name => $ENV{NOVA_SERVICE_NAME},
         is_rax_auth  => $ENV{NOVA_RAX_AUTH},
-        verify_ssl   => 0, 
+        verify_ssl   => 0,
     );
-    $compute->create_server(name => 's1', flavor => $flav_id, image => $img_id);
+    $compute->create_server({name => 's1', flavorRef => $flav_id, imageRef => $img_id});
 
 =head1 DESCRIPTION
 

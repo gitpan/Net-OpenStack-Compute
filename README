@@ -2,7 +2,7 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 VERSION
-    version 1.1001
+    version 1.1002
 
 SYNOPSIS
         use Net::OpenStack::Compute;
@@ -15,9 +15,9 @@ SYNOPSIS
             region       => $ENV{NOVA_REGION_NAME},
             service_name => $ENV{NOVA_SERVICE_NAME},
             is_rax_auth  => $ENV{NOVA_RAX_AUTH},
-            verify_ssl   => 0, 
+            verify_ssl   => 0,
         );
-        $compute->create_server(name => 's1', flavor => $flav_id, image => $img_id);
+        $compute->create_server({name => 's1', flavorRef => $flav_id, imageRef => $img_id});
 
 DESCRIPTION
     This class is an interface to the OpenStack Compute API. Also see the

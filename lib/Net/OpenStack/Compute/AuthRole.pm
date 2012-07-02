@@ -1,5 +1,5 @@
 package Net::OpenStack::Compute::AuthRole;
-use Moo::Role;
+use Moose::Role;
 
 use JSON qw(from_json to_json);
 
@@ -18,7 +18,7 @@ requires qw(
 sub get_auth_info {
     my ($self) = @_;
     my $auth_url = $self->auth_url;
-    my ($version) = $auth_url =~ /(v\d\.\d)$/;
+    my ($version) = $auth_url =~ /(v\d+\.\d+)$/;
     die "Could not determine version from url [$auth_url]" unless $version;
     return $self->auth_rax() if $self->is_rax_auth;
     return $self->auth_basic() if $version lt 'v2';
@@ -107,7 +107,7 @@ Net::OpenStack::Compute::AuthRole
 
 =head1 VERSION
 
-version 1.1001
+version 1.1002
 
 =head1 DESCRIPTION
 
