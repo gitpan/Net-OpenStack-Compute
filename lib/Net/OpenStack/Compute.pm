@@ -1,7 +1,7 @@
 package Net::OpenStack::Compute;
 use Moose;
 
-our $VERSION = '1.1002'; # VERSION
+our $VERSION = '1.1003'; # VERSION
 
 use Carp;
 use HTTP::Request;
@@ -258,6 +258,7 @@ around qw( _get _post _delete ) => sub {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -266,23 +267,22 @@ Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 =head1 VERSION
 
-version 1.1002
+version 1.1003
 
 =head1 SYNOPSIS
 
     use Net::OpenStack::Compute;
     my $compute = Net::OpenStack::Compute->new(
-        auth_url     => $auth_url,
-        user         => $user,
-        password     => $password,
-        project_id   => $project_id,
-        # Optional:
-        region       => $ENV{NOVA_REGION_NAME},
-        service_name => $ENV{NOVA_SERVICE_NAME},
-        is_rax_auth  => $ENV{NOVA_RAX_AUTH},
-        verify_ssl   => 0,
+        auth_url     => 'https://identity.api.rackspacecloud.com/v2.0',
+        user         => 'alejandro',
+        password     => 'password',
+        region       => 'ORD',
     );
-    $compute->create_server({name => 's1', flavorRef => $flav_id, imageRef => $img_id});
+    $compute->create_server({
+        name      => 'server1',
+        flavorRef => $flav_id,
+        imageRef  => $img_id,
+    });
 
 =head1 DESCRIPTION
 
@@ -302,6 +302,49 @@ Methods that return an arrayref of resources will return an empty arrayref if
 the list is empty.
 Methods that create, modify, or delete resources will throw an exception on
 failure.
+
+=head2 new
+
+Creates a client.
+
+params:
+
+=over
+
+=item auth_url
+
+Required. The url of the authentication endpoint. For example:
+C<'https://identity.api.rackspacecloud.com/v2.0'>
+
+=item user
+
+Required.
+
+=item password
+
+Required.
+
+=item region
+
+Optional.
+
+=item project_id
+
+Optional.
+
+=item service_name
+
+Optional.
+
+=item verify_ssl
+
+Optional. Defaults to 1.
+
+=item is_rax_auth
+
+Optional. Defaults to 0.
+
+=back
 
 =head2 get_server
 
@@ -459,4 +502,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

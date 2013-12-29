@@ -2,22 +2,21 @@ NAME
     Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 VERSION
-    version 1.1002
+    version 1.1003
 
 SYNOPSIS
         use Net::OpenStack::Compute;
         my $compute = Net::OpenStack::Compute->new(
-            auth_url     => $auth_url,
-            user         => $user,
-            password     => $password,
-            project_id   => $project_id,
-            # Optional:
-            region       => $ENV{NOVA_REGION_NAME},
-            service_name => $ENV{NOVA_SERVICE_NAME},
-            is_rax_auth  => $ENV{NOVA_RAX_AUTH},
-            verify_ssl   => 0,
+            auth_url     => 'https://identity.api.rackspacecloud.com/v2.0',
+            user         => 'alejandro',
+            password     => 'password',
+            region       => 'ORD',
         );
-        $compute->create_server({name => 's1', flavorRef => $flav_id, imageRef => $img_id});
+        $compute->create_server({
+            name      => 'server1',
+            flavorRef => $flav_id,
+            imageRef  => $img_id,
+        });
 
 DESCRIPTION
     This class is an interface to the OpenStack Compute API. Also see the
@@ -32,6 +31,36 @@ METHODS
     the resource is not found. Methods that return an arrayref of resources
     will return an empty arrayref if the list is empty. Methods that create,
     modify, or delete resources will throw an exception on failure.
+
+  new
+    Creates a client.
+
+    params:
+
+    auth_url
+        Required. The url of the authentication endpoint. For example:
+        'https://identity.api.rackspacecloud.com/v2.0'
+
+    user
+        Required.
+
+    password
+        Required.
+
+    region
+        Optional.
+
+    project_id
+        Optional.
+
+    service_name
+        Optional.
+
+    verify_ssl
+        Optional. Defaults to 1.
+
+    is_rax_auth
+        Optional. Defaults to 0.
 
   get_server
         get_server($id)

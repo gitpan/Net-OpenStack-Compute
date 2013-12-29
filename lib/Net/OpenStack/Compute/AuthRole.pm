@@ -99,6 +99,7 @@ sub _parse_catalog {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -107,7 +108,7 @@ Net::OpenStack::Compute::AuthRole
 
 =head1 VERSION
 
-version 1.1002
+version 1.1003
 
 =head1 DESCRIPTION
 
@@ -128,4 +129,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

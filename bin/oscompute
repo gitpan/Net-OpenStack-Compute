@@ -234,8 +234,8 @@ sub _parse_pod {
 
 # PODNAME: oscompute
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -244,7 +244,7 @@ oscompute
 
 =head1 VERSION
 
-version 1.1002
+version 1.1003
 
 =head1 SYNOPSIS
 
@@ -343,4 +343,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
