@@ -1,7 +1,7 @@
 package Net::OpenStack::Compute;
 use Moose;
 
-our $VERSION = '1.1003'; # VERSION
+our $VERSION = '1.1100'; # VERSION
 
 use Carp;
 use HTTP::Request;
@@ -160,6 +160,13 @@ sub set_password {
     return _check_res($res);
 }
 
+sub get_networks {
+    my ($self, %params) = @_;
+    my $q = _get_query(%params);
+    my $res = $self->_get($self->_url("/os-tenant-networks", $params{detail}, $q));
+    return from_json($res->content)->{networks};
+}
+
 sub get_images {
     my ($self, %params) = @_;
     my $q = _get_query(%params);
@@ -261,13 +268,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Net::OpenStack::Compute - Bindings for the OpenStack Compute API.
 
 =head1 VERSION
 
-version 1.1003
+version 1.1100
 
 =head1 SYNOPSIS
 
@@ -403,6 +412,12 @@ Returns a server hashref.
 
 Returns true on success.
 
+=head2 get_networks
+
+    get_networks($id)
+
+Returns a network list
+.
 =head2 get_image
 
     get_image($id)

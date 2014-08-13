@@ -102,13 +102,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Net::OpenStack::Compute::AuthRole
 
 =head1 VERSION
 
-version 1.1003
+version 1.1100
 
 =head1 DESCRIPTION
 
